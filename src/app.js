@@ -55,16 +55,18 @@ app.get('/weather',(req,res) => {
         }
         else{
             
-            forecast(data,(error,weather_data) =>{
+            forecast(data,(error,{temp,desc,precip,time,icon}) =>{
                 if (error){
                     return res.send({error})
                 }
                 else{
                     //console.log(`Temperature in ${data.location} is`,weather_data, `degrees`)
                     res.send({
-                        forecast:weather_data,
+                        forecast:'Temperature is '+temp+ ' degrees. It is '+desc+ ' here. There is '+precip+ '% chance of rain.',
+                        time,
                         location:data.location,
-                        address:req.query.address
+                        address:req.query.address,
+                        icon
                     })
                 }
             })

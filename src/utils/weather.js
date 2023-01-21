@@ -10,7 +10,11 @@ const forecast = (loc,callback) =>{
             callback('Weather not available for selected location. Check your location input.')
         }
         else{
-            callback(undefined,`Temperature is ${response.body.current.temperature} degrees. It is ${response.body.current.weather_descriptions} here. There is ${response.body.current.precip}% chance of rain.`)
+            callback(undefined,{"temp":response.body.current.temperature,
+                        "desc":response.body.current.weather_descriptions,
+                        "precip":response.body.current.precip,
+                        "time": response.body.location.localtime ,
+                        "icon":response.body.current.weather_icons  })
         }
     })
 
