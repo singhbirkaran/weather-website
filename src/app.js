@@ -25,6 +25,7 @@ app.get('', (req,res) => {
         name:'Birkaran'
     })
 })
+
 app.get('/help',(req,res) => {
     res.render('help',{
         title:'Help',
@@ -32,12 +33,14 @@ app.get('/help',(req,res) => {
         name:'Birkaran'
     })
 })
+
 app.get('/about',(req,res) => {
     res.render('about',{
         title:'About',
         name:'Birkaran'
     })
 })
+
 app.get('/weather',(req,res) => {
     if (!req.query.address){
         return res.send({
@@ -76,6 +79,7 @@ app.get('/help/*',(req,res) => {
         name:'Birkaran'
     })
 })
+
 app.get('*',(req,res) => {
     res.render('404',{
         error:'Page not found',
